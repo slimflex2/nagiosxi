@@ -1,0 +1,27 @@
+- hosts: all
+  tasks:
+  - name: Install Prerequisites
+    import_role:
+      name: ansible-role-prerequisites
+
+  - name: Install OpenJDK
+    import_role:
+      name: ansible_role_nagiosxi
+
+  - name: Clone Repo
+    git:
+      repo: 
+      dest: /home/centos
+
+  - name: execute full install
+    shell: "./fullinstall "
+    args:
+      chdir: /home/centos/nagioxi
+
+  - name: Stop service cron on debian, if running
+    systemd:
+      name: nagios 
+      state: started
+      enabled: yes
+
+

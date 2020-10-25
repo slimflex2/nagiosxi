@@ -1,0 +1,20 @@
+---
+# tasks file for ansible_role_nagios
+
+- name: selinux permissive
+  selinux: 
+    policy:targeted 
+    state:permissive
+
+- name: fetch latest stable release
+  get_url: 
+    url: http://assets.nagios.com/downloads/nagiosxi/xi-latest.tar.gz
+    dest: /home/centos
+
+- name: extact latest release
+  unarchive: 
+    src: /home/centos/xi-latest.tar.gz 
+    dest= /home/centos 
+  args:
+    creates= /home/centos/nagiosxi
+
