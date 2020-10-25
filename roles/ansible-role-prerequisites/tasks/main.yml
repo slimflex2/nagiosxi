@@ -7,3 +7,7 @@
     - vim
     - wget
     - git
+
+- name: Set hostname
+  hostname:
+    name: "{{ server_name }}"

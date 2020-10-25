@@ -3,6 +3,8 @@
   - name: Install Prerequisites
     import_role:
       name: ansible-role-prerequisites
+    vars:
+    - server_name: "{{ inventory_hostname }}"
 
   - name: Install Nagiosxi
     import_role:
@@ -13,8 +15,3 @@
     args:
       chdir: /home/centos/nagiosxi
 
-  - name: Change Hostname
-    import_role:
-      name: ansible-role-hostname
-    vars:
-    - server_name: "{{ inventory_hostname }}"
