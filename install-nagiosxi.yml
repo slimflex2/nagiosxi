@@ -4,17 +4,17 @@
     import_role:
       name: ansible-role-prerequisites
 
-  - name: Install OpenJDK
+  - name: Install Nagiosxi
     import_role:
       name: ansible_role_nagiosxi
 
-  - name: Clone Repo
-    git:
-      repo: https://github.com/john24rel/nagiosxi.git 
-      dest: /home/centos
-
   - name: execute full install
-    shell: "./fullinstall "
+    shell: "./fullinstall -n  "
     args:
       chdir: /home/centos/nagiosxi
 
+  - name: Change Hostname
+    import_role:
+      name: ansible-role-hostname
+    vars:
+    - server_name: "{{ inventory_hostname }}"
