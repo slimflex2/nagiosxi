@@ -10,18 +10,11 @@
 
   - name: Clone Repo
     git:
-      repo: 
+      repo: https://github.com/john24rel/nagiosxi.git 
       dest: /home/centos
 
   - name: execute full install
     shell: "./fullinstall "
     args:
-      chdir: /home/centos/nagioxi
-
-  - name: Stop service cron on debian, if running
-    systemd:
-      name: nagios 
-      state: started
-      enabled: yes
-
+      chdir: /home/centos/nagiosxi
 
