@@ -10,8 +10,4 @@
     import_role:
       name: ansible_role_nagiosxi
 
-  - name: execute full install
-    shell: "./fullinstall -n  "
-    args:
-      chdir: /home/centos/nagiosxi
 
