@@ -9,6 +9,27 @@
     update_cache: yes
   when: ansible_os_family == 'RedHat'
 
+- name: copy to conf.dist
+  shell: "cp -p snmpd.conf snmpd.conf.dist"
+  args:
+    chdir: /etc/snmp
+
+- name: copy snmpd.conf
+  shell: echo "rocommunity public" > snmpd.conf | echo "syslocation here" >> snmpd.conf | echo "syscontact root@localhost" >> snmpd.conf
+  args:
+    chdir: /etc/snmp
+
+-name: start snmpd
+ systemd:
+   name: snmpd
+   state: started
+   enabled: yes
+
+- name:  snmpwalk
+  shell: snmpwalk -v 1 -c public -O e 127.0.0.1
+  args:
+    chdir: /etc/snmp
+
 - name: Install Prerequisites
   package:
     name:
