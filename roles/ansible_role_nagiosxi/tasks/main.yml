@@ -19,11 +19,11 @@
   args:
     chdir: /etc/snmp
 
--name: start snmpd
- systemd:
-   name: snmpd
-   state: started
-   enabled: yes
+- name: start snmpd
+  systemd:
+    name: snmpd
+    state: started
+    enabled: yes
 
 - name:  snmpwalk
   shell: snmpwalk -v 1 -c public -O e 127.0.0.1
