@@ -5,8 +5,9 @@
   yum:
     name:
     - vim
-    - wget
+    - net-snmp
     - git
+    update_cache: yes
 
 - name: Set hostname
   hostname:

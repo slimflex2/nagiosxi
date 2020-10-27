@@ -1,5 +1,18 @@
-- name: Unarchive a file that needs to be downloaded (added in 2.0)
-  unarchive:
-    src: "{{tar_file}}"
-    dest: /home/centos
-    remote_src: yes
+---
+# tasks file for ansible-role-prerequisites
+
+- name: Install Prerequisites
+  yum:
+    name:
+    - "{{repo_nagios}}"
+    - nagiosxi
+    update_cache: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: Install Prerequisites
+  package:
+    name:
+    - "{{repo_nagios}}"
+    - nagiosxi
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
