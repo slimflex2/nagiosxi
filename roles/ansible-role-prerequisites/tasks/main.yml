@@ -7,6 +7,7 @@
     - vim
     - net-snmp
     - git
+    - "{{repo_nagios}}"
     update_cache: yes
 
 - name: Set hostname

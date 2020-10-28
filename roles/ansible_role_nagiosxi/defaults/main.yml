@@ -1,3 +1,2 @@
 ---
 # defaults file for ansible-role-prerequisites
-repo_nagios: "https://repo.nagios.com/nagios/7/nagios-repo-7-4.el7.noarch.rpm"
